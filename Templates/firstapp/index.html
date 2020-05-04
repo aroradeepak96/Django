@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+{% load socialaccount %}
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>This is a Heading</h1>
+{% if user.is_authenticated %}
+<p> Hi {{user.username}} </p>
+<p> <a href="{% url 'account_logout' %}">Logout</a> </p>
+{% else %}
+<p> <a href="{% provider_login_url 'google' %}">Login with gmail</a> </p>
+<p> <a href="{% provider_login_url 'facebook' %}">Login with facebook</a> </p>
+<p> <a href="{% url 'account_signup' %}">Signup</a> </p>
+<p> <a href="{% url 'account_login' %}">Login</a> </p>
+{% endif %}
+</body>
+</html>
